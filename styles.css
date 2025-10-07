@@ -1,0 +1,360 @@
+body {
+      margin: 0;
+      font-family: 'Montserrat', Arial, sans-serif;
+      background: #191919;
+      color: #fff;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 50px;
+      background: #232323;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-box {
+      background: #b5ff18;
+      border-radius: 10px;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-text {
+      font-size: 1.2em;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 6px;
+      transition: background 0.2s;
+    }
+
+    nav a.active,
+    nav a:hover {
+      background: #333;
+    }
+
+    .contact-btn {
+      background: #b5ff18;
+      color: #232323;
+      border: none;
+      padding: 10px 25px;
+      border-radius: 8px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .contact-btn:hover {
+      background: #d6ff60;
+    }
+
+    .main-section {
+      text-align: center;
+      margin: 60px 0 0 0;
+    }
+
+    .main-section h1 {
+      font-size: 2.8em;
+      margin-bottom: 16px;
+      font-weight: 700;
+    }
+
+    .main-section h2 {
+      font-size: 2em;
+      margin-bottom: 28px;
+      font-weight: 400;
+    }
+
+    .tags-bar {
+      background: rgba(30, 30, 30, 0.85);
+      display: inline-flex;
+      gap: 12px;
+      padding: 12px 26px;
+      border-radius: 11px;
+      margin: 24px 0;
+    }
+
+    .tag {
+      background: #232323;
+      color: #b5ff18;
+      padding: 7px 18px;
+      border-radius: 7px;
+      font-size: 1em;
+      margin-right: 2px;
+      font-weight: 500;
+    }
+
+    .buttons-bar {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      margin: 30px 0;
+    }
+
+    .btn {
+      background: #333;
+      color: #fff;
+      padding: 13px 38px;
+      border-radius: 9px;
+      font-weight: 600;
+      border: none;
+      font-size: 1.1em;
+      cursor: pointer;
+    }
+
+    .btn.highlight {
+      background: #b5ff18;
+      color: #232323;
+    }
+
+    .btn.highlight:hover {
+      background: #d6ff60;
+    }
+
+    footer {
+      background: transparent;
+      text-align: center;
+      color: #aaa;
+      font-size: 1em;
+      padding: 30px;
+      bottom: 0;
+    }
+
+    @media (max-width: 700px) {
+
+      header,
+      .main-section {
+        padding: 16px;
+      }
+
+      .main-section h1 {
+        font-size: 2em;
+      }
+
+      .main-section h2 {
+        font-size: 1.25em;
+      }
+
+      .buttons-bar {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+.snippet-form-section {
+  background: #232323;
+  padding: 50px 0 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.snippet-form {
+  background: #191919;
+  border-radius: 13px;
+  box-shadow: 0 3px 18px 0 rgba(60,80,40,0.08);
+  padding: 32px 32px 24px 32px;
+  width: 100%;
+  max-width: 730px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.snippet-form-title {
+  width: 100%;
+  margin-bottom: 26px;
+}
+
+.input-title {
+  width: 90%;
+  padding: 13px 16px;
+  border-radius: 7px;
+  border: none;
+  font-size: 1.16em;
+  background: #232323;
+  color: #fff;
+  outline: none;
+  margin-bottom: 0;
+  font-weight: 700;
+}
+
+.snippet-form-rows {
+  display: flex;
+  width: 100%;
+  gap: 22px;
+  margin-bottom: 24px;
+}
+
+.snippet-code, .snippet-desc {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.snippet-code {
+  flex: 2;
+}
+
+.snippet-desc {
+  flex: 1.2;
+}
+
+.form-label {
+  font-size: 0.97em;
+  color: #b5ff18;
+  margin-bottom: 8px;
+  margin-left: 2px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+
+.input-code,
+.input-desc {
+  background: #232323;
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  padding: 12px 14px;
+  font-size: 1.04em;
+  font-family: monospace;
+  min-height: 115px;
+  margin-bottom: 0;
+  resize: vertical;
+}
+
+.snippet-form-submit {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.snippet-submit-btn {
+  background: #b5ff18;
+  color: #191919;
+  font-weight: 700;
+  padding: 13px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.13em;
+  cursor: pointer;
+  transition: background 0.22s;
+}
+.snippet-submit-btn:hover {
+  background: #d6ff60;
+}
+
+@media (max-width: 900px) {
+  .snippet-form { padding: 28px 8px 20px 8px; }
+  .snippet-form-rows { flex-direction: column; gap: 14px; }
+}
+
+
+    /* Add this CSS below your previous styles */
+
+    .services-section {
+      background: #232323;
+      color: #fff;
+      padding: 60px 0 60px 0;
+      text-align: center;
+    }
+
+    .services-heading {
+      font-size: 2.3em;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .services-subheading {
+      color: #ddd;
+      margin-bottom: 40px;
+      font-size: 1.15em;
+      font-weight: 400;
+    }
+
+    .services-card-wrapper {
+      display: flex;
+      justify-content: center;
+      gap: 38px;
+      flex-wrap: wrap;
+      padding: 0 30px;
+    }
+
+    .service-card {
+      background: #191919;
+      border-radius: 19px;
+      box-shadow: 0 6px 48px 0 rgba(50, 60, 40, 0.13);
+      width: 320px;
+      padding: 38px 28px 34px 28px;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }
+
+    .service-icon {
+      margin-bottom: 24px;
+    }
+
+    .service-card h3 {
+      margin: 0 0 18px 0;
+      font-size: 1.3em;
+      font-weight: 700;
+    }
+
+    .service-card p {
+      font-size: 1em;
+      color: #d3d3d3;
+      margin-bottom: 30px;
+      font-weight: 400;
+      line-height: 1.56;
+    }
+
+    .learn-btn {
+      background: #232323;
+      color: #fff;
+      border: none;
+      padding: 12px 0;
+      border-radius: 9px;
+      font-size: 1.08em;
+      font-weight: 700;
+      width: 100%;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .learn-btn:hover {
+      background: #333;
+    }
+
+    @media (max-width: 900px) {
+      .services-card-wrapper {
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+      }
+
+      .service-card {
+        width: 92vw;
+        max-width: 370px;
+      }
+    }
