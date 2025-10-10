@@ -6,6 +6,7 @@
   <title>CodeYaadein - Your Code Snippet Diary</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -22,7 +23,7 @@
     <nav>
       <a href="#" class="active">Home</a>
       <a href="#">Features</a>
-      <a href="#">Snippets</a>
+      <a href="snippets.html">Snippets</a>
       <a href="#">Process</a>
       <a href="#">About</a>
       <a href="#">Careers</a>
@@ -53,21 +54,38 @@
     <div class="snippet-form-title">
       <input type="text" placeholder="Title" class="input-title" required>
     </div>
+
     <div class="snippet-form-rows">
+
+      <div class="snippet-lang">
+        <label for="language" class="form-label">Language</label>
+        <select id="language" class="input-lang" required>
+          <option value="">Select Language</option>
+          <option value="java">Java</option>
+          <option value="python">Python</option>
+          <option value="javascript">JavaScript</option>
+          <option value="c++">C++</option>
+          <option value="c">C</option>
+        </select>
+      </div>
+
       <div class="snippet-code">
         <label for="code" class="form-label">Code</label>
         <textarea id="code" class="input-code" placeholder="Write your code..." required></textarea>
       </div>
+
       <div class="snippet-desc">
         <label for="desc" class="form-label">Description</label>
         <textarea id="desc" class="input-desc" placeholder="Describe code (optional)"></textarea>
       </div>
     </div>
+
     <div class="snippet-form-submit">
       <button type="submit" class="snippet-submit-btn">Save Snippet</button>
     </div>
   </form>
 </div>
+
 
 
   <div class="services-section">
