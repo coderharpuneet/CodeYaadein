@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Code Folders - CodeYaadein</title>
+  <title>My Snippets - CodeYaadein</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="snippets.css" />
+  <script src="snippets.js"></script>
 </head>
 <body>
   <header>
@@ -24,28 +25,18 @@
     </nav>
   </header>
 
-  <section class="snippet-folder-section">
-    <h1>Your Code Folders</h1>
-    <div class="folder-container">
-      <div class="folder-card">
-        <div class="folder-icon">📘</div>
-        <h2>Java</h2>
-      </div>
-      <div class="folder-card">
-        <div class="folder-icon">🐍</div>
-        <h2>Python</h2>
-      </div>
-      <div class="folder-card">
-        <div class="folder-icon">🟨</div>
-        <h2>JavaScript</h2>
-      </div>
-      <div class="folder-card">
-        <div class="folder-icon">💠</div>
-        <h2>C++</h2>
-      </div>
-      <div class="folder-card">
-        <div class="folder-icon">🔵</div>
-        <h2>C</h2>
+  <section class="snippet-display-section">
+    <h1>Your Saved Snippets</h1>
+    <div class="snippet-container">
+      <!-- Cards will be dynamically injected here -->
+      <!-- Example static card -->
+      <div class="snippet-card">
+        <div class="snippet-header">
+          <h2>Binary Search</h2>
+          <span class="lang-tag">Java</span>
+        </div>
+        <p class="snippet-desc">Efficient search algorithm for sorted arrays...</p>
+        <button class="view-btn">View Code</button>
       </div>
     </div>
   </section>
