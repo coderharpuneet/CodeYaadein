@@ -169,9 +169,4 @@ This project is open source and available under the **MIT License**.
 
 ### ⭐ If you like this project, give it a star on GitHub!
 
-```
 
----
-
-Would you like me to format this README in **aesthetic GitHub-style** (with emojis + badges + collapsible sections like `<details>`) — or keep it this clean professional layout?
-```

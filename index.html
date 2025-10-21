@@ -1,15 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CodeYaadein - Your Code Snippet Diary</title>
+
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
   <link rel="stylesheet" href="assets/css/styles.css">
+
+  <!-- JS -->
   <script src="assets/js/script.js" defer></script>
 </head>
 
 <body>
+  <!-- Header Section -->
   <header>
     <div class="logo">
       <div class="logo-box">
@@ -18,71 +26,84 @@
           <rect x="6" y="6" width="15" height="15" rx="5" fill="#b5ff18" />
         </svg>
       </div>
-      <div class="logo-text">CodeYaadein</div>
+      <div class="logo-text">
+        <a href="index.html" style="text-decoration: none;">CodeYaadein</a>
+      </div>
     </div>
     <nav>
-      <a href="#" class="active">Home</a>
-      <a href="snippets.html">Snippets</a>
+      <a href="index.html">Home</a>
+      <a href="snippets.html" class="active">Snippets</a>
     </nav>
   </header>
+
+  <!-- Main Section -->
   <div class="main-section">
     <h1>A Code Snippet Diary that will Work</h1>
     <h2>For Developers, Students, Teams, and Personal Use</h2>
+
     <div class="tags-bar">
       <span>For</span>
       <span class="tag">Java</span>
       <span class="tag">Python</span>
       <span class="tag">JavaScript</span>
     </div>
+
     <div class="buttons-bar">
+      <!-- Future buttons can be added here -->
     </div>
   </div>
 
-
-<div class="snippet-form-section">
-  <form class="snippet-form">
-    <div class="snippet-form-title">
-      <input type="text" placeholder="Title" class="input-title" required>
-    </div>
-
-    <div class="snippet-form-rows">
-      <div class="snippet-lang">
-        <label for="language" class="form-label">Language</label>
-        <select id="language" class="input-lang" required>
-          <option value="">Select Language</option>
-          <option value="java">Java</option>
-          <option value="python">Python</option>
-          <option value="javascript">JavaScript</option>
-          <option value="c++">C++</option>
-          <option value="c">C</option>
-        </select>
+  <!-- Snippet Form Section -->
+  <div class="snippet-form-section">
+    <form class="snippet-form">
+      <!-- Form Title -->
+      <div class="snippet-form-title">
+        <input type="text" placeholder="Title" class="input-title" required>
       </div>
 
-      <div class="snippet-code">
-        <label for="code" class="form-label">Code</label>
-        <textarea id="code" class="input-code" placeholder="Write your code..." required></textarea>
+      <!-- Form Rows -->
+      <div class="snippet-form-rows">
+        <!-- Language Selector -->
+        <div class="snippet-lang">
+          <label for="language" class="form-label">Language</label>
+          <select id="language" class="input-lang" required>
+            <option value="">Select Language</option>
+            <option value="java">Java</option>
+            <option value="python">Python</option>
+            <option value="javascript">JavaScript</option>
+          </select>
+        </div>
+
+        <!-- Code Textarea -->
+        <div class="snippet-code">
+          <label for="code" class="form-label">Code</label>
+          <textarea id="code" class="input-code" placeholder="Write your code..." required></textarea>
+        </div>
+
+        <!-- Description Textarea -->
+        <div class="snippet-desc">
+          <label for="desc" class="form-label">Description</label>
+          <textarea id="desc" class="input-desc" placeholder="Describe code (optional)"></textarea>
+        </div>
       </div>
 
-      <div class="snippet-desc">
-        <label for="desc" class="form-label">Description</label>
-        <textarea id="desc" class="input-desc" placeholder="Describe code (optional)"></textarea>
+      <!-- Submit Button -->
+      <div class="snippet-form-submit">
+        <button type="submit" class="snippet-submit-btn">Save Snippet</button>
       </div>
-    </div>
+    </form>
+  </div>
 
-    <div class="snippet-form-submit">
-      <button type="submit" class="snippet-submit-btn">Save Snippet</button>
-    </div>
-  </form>
-</div>
-
-
-
-
+  <!-- Services Section -->
   <div class="services-section">
     <h2 class="services-heading">Our Services</h2>
-    <p class="services-subheading">Transform your coding experience with modern, intuitive and robust features that keep
-      your snippets organized and accessible.</p>
+    <p class="services-subheading">
+      Transform your coding experience with modern, intuitive and robust features that keep your snippets organized and accessible.
+    </p>
+
     <div class="services-card-wrapper">
+
+      <!-- Design Card -->
       <div class="service-card">
         <div class="service-icon">
           <svg width="32" height="32">
@@ -93,10 +114,11 @@
         <h3>Design</h3>
         <p>
           CodeYaadein brings a user-centric design for fast code snippet search and organization.<br>
-          Features like dark mode, syntax highlighting and clean UI make your code diary visually stunning and simple to
-          use.
+          Features like dark mode, syntax highlighting and clean UI make your code diary visually stunning and simple to use.
         </p>
       </div>
+
+      <!-- Engineering Card -->
       <div class="service-card">
         <div class="service-icon">
           <svg width="32" height="32">
@@ -110,6 +132,8 @@
           Use tags, search, and filters powered by robust algorithms for efficient code management.
         </p>
       </div>
+
+      <!-- Project Management Card -->
       <div class="service-card">
         <div class="service-icon">
           <svg width="32" height="32">
@@ -123,6 +147,7 @@
           Collaborate easily and keep your development workflow smooth and transparent.
         </p>
       </div>
+
     </div>
   </div>
 

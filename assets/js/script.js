@@ -1,60 +1,146 @@
-let form = document.querySelector(".snippet-form");
-let title = document.querySelector(".input-title");
-let language = document.querySelector(".input-lang");
-let code = document.querySelector("#code");
-let description = document.querySelector("#desc");
-let submitBtn = document.querySelector(".snippet-submit-btn");
+// ...existing code...
+/**
+ * script.js
+ *
+ * - Uses a STORAGE_KEY constant
+ * - Guards DOM access (handles missing elements)
+ * - Small helper functions (load/save/clear/toast)
+ * - Well-indented, documented and modular
+ */
 
-let snippets = JSON.parse(localStorage.getItem("codeSnippets")) || [];
+document.addEventListener("DOMContentLoaded", () => {
+  /* ----------------------------- Constants ------------------------------ */
+  const STORAGE_KEY = "codeSnippets";
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
+  /* --------------------------- Element Cache ---------------------------- */
+  const form = document.querySelector(".snippet-form");
+  const titleInput = document.querySelector(".input-title");
+  const languageInput = document.querySelector(".input-lang");
+  const codeInput = document.querySelector("#code");
+  const descInput = document.querySelector("#desc");
+  const submitBtn = document.querySelector(".snippet-submit-btn");
 
-  let newSnippet = {
-    title: title.value.trim(),
-    language: language.value.trim(),
-    code: code.value.trim(),
-    description: description.value.trim(),
-  };
+  /* ----------------------------- Utilities ------------------------------ */
+  /**
+   * Safely read snippets array from localStorage.
+   * @returns {Array<Object>}
+   */
+  function loadSnippets() {
+    try {
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+    } catch (err) {
+      // If stored JSON is corrupted, return empty array and log warning.
+      console.warn("loadSnippets: failed to parse localStorage value", err);
+      return [];
+    }
+  }
 
-  snippets.push(newSnippet);
-  localStorage.setItem("codeSnippets", JSON.stringify(snippets));
+  /**
+   * Persist snippets array to localStorage.
+   * @param {Array<Object>} snippets
+   */
+  function saveSnippets(snippets) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(snippets));
+    } catch (err) {
+      console.error("saveSnippets: failed to write to localStorage", err);
+    }
+  }
 
-  title.value = "";
-  language.value = "";
-  code.value = "";
-  description.value = "";
+  /**
+   * Clear form inputs.
+   */
+  function clearForm() {
+    if (titleInput) titleInput.value = "";
+    if (languageInput) languageInput.value = "";
+    if (codeInput) codeInput.value = "";
+    if (descInput) descInput.value = "";
+  }
 
-  showToast("Snippet saved successfully!");
-});
+  /**
+   * Small toast/notification helper.
+   * @param {string} message
+   * @param {number} [duration=3000]
+   */
+  function showToast(message, duration = 3000) {
+    const toast = document.createElement("div");
+    toast.className = "snack-toast";
+    toast.textContent = message;
 
-// Fixed Toaster Function
-function showToast(message, duration = 3000) {
-  const toast = document.createElement("div");
-  toast.textContent = message;
-  toast.style.position = "fixed";
-  toast.style.top = "20px";
-  toast.style.right = "20px";
-  toast.style.background = "#b5ff18";
-  toast.style.color = "#191919";
-  toast.style.padding = "12px 20px";
-  toast.style.borderRadius = "8px";
-  toast.style.fontWeight = "600";
-  toast.style.boxShadow = "0 0 10px rgba(181,255,24,0.5)";
-  toast.style.opacity = "0";
-  toast.style.transition = "opacity 0.4s ease";
-  toast.style.zIndex = "9999";
+    Object.assign(toast.style, {
+      position: "fixed",
+      top: "20px",
+      right: "20px",
+      background: "#b5ff18",
+      color: "#191919",
+      padding: "12px 20px",
+      borderRadius: "8px",
+      fontWeight: "600",
+      boxShadow: "0 6px 18px rgba(0,0,0,0.12)",
+      opacity: "0",
+      transition: "opacity 0.35s ease",
+      zIndex: "9999",
+    });
 
-  document.body.appendChild(toast);
+    document.body.appendChild(toast);
 
-  setTimeout(() => {
-    toast.style.opacity = "1";
-  }, 100);
+    // Fade in
+    requestAnimationFrame(() => {
+      toast.style.opacity = "1";
+    });
 
-  setTimeout(() => {
-    toast.style.opacity = "0";
+    // Fade out & remove
     setTimeout(() => {
-      toast.remove();
-    }, 400);
-  }, duration);
-}
+      toast.style.opacity = "0";
+      setTimeout(() => toast.remove(), 350);
+    }, duration);
+  }
+
+  /* ---------------------------- Form Handler ---------------------------- */
+  /**
+   * Handle form submit - create a new snippet and persist it.
+   * @param {SubmitEvent} event
+   */
+  function onFormSubmit(event) {
+    event.preventDefault();
+
+    if (!form) return;
+
+    const newSnippet = {
+      title: (titleInput && titleInput.value.trim()) || "",
+      language: (languageInput && languageInput.value.trim()) || "",
+      code: (codeInput && codeInput.value.trim()) || "",
+      description: (descInput && descInput.value.trim()) || "",
+    };
+
+    // Basic validation: require at least a title or code
+    if (!newSnippet.title && !newSnippet.code) {
+      showToast("Please provide a title or some code before saving.", 2500);
+      return;
+    }
+
+    const snippets = loadSnippets();
+    snippets.push(newSnippet);
+    saveSnippets(snippets);
+
+    clearForm();
+    showToast("Snippet saved successfully!");
+  }
+
+  /* --------------------------- Initialization --------------------------- */
+  function init() {
+    if (!form) {
+      console.warn("script.js: snippet form not found — initialization skipped");
+      return;
+    }
+
+    form.addEventListener("submit", onFormSubmit);
+
+    // Progressive enhancement: enable submit button if present
+    if (submitBtn) {
+      submitBtn.disabled = false;
+    }
+  }
+
+  init();
+});

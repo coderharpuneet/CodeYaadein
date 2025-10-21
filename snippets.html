@@ -1,36 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Snippets - CodeYaadein</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/snippets.css" />
-  <script src="assets/js/snippets.js" defer></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Snippets - CodeYaadein</title>
+
+    <!-- Fonts & styles -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="assets/css/snippets.css" />
+
+    <!-- Shared header injector + page logic -->
+    <script src="assets/js/header.js" defer></script>
+    <script src="assets/js/snippets.js" defer></script>
 </head>
+
 <body>
-  <header>
-    <div class="logo">
-      <div class="logo-box">
-        <svg width="27" height="27" viewBox="0 0 27 27">
-          <rect width="27" height="27" rx="8" fill="#232323" />
-          <rect x="6" y="6" width="15" height="15" rx="5" fill="#b5ff18" />
-        </svg>
-      </div>
-      <div class="logo-text">CodeYaadein</div>
-    </div>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="#" class="active">Snippets</a>
-    </nav>
-  </header>
+    <!-- header is injected by assets/js/header.js to keep nav consistent across pages -->
+    <header id="site-header" role="banner"></header>
 
-  <section class="snippet-display-section">
-    <h1>Your Saved Snippets</h1>
-    <div class="snippet-container">
-    </div>
-  </section>
+    <main>
+        <section class="snippet-display-section" aria-labelledby="snippets-heading">
+            <h1 id="snippets-heading">Your Saved Snippets</h1>
 
-  <script src="snippets.js"></script>
+            <div class="search-bar" role="search" aria-label="Search snippets">
+                <input
+                    type="search"
+                    id="search-input"
+                    placeholder="Search snippets by title, language or description..."
+                    aria-label="Search snippets" />
+            </div>
+
+            <div class="snippet-container" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <!-- No inline script here: JS files are loaded with `defer` in the head -->
 </body>
+
 </html>
