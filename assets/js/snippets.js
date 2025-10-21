@@ -9,6 +9,51 @@ document.addEventListener("DOMContentLoaded", () => {
     container.innerHTML = `<p class="empty-msg">No snippets saved yet 😅</p>`;
   };
 
+  function highlightJava(code) {
+  // Escape HTML characters first
+  code = code
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+
+  // Java comments (single-line and multi-line)
+  code = code.replace(/(\/\/.*$)/gm, '<span class="comment">$1</span>');
+  code = code.replace(/(\/\*[\s\S]*?\*\/)/gm, '<span class="comment">$1</span>');
+
+  // Strings
+  code = code.replace(/("(?:\\.|[^"\\])*")/g, '<span class="string">$1</span>');
+
+  // Numbers
+  code = code.replace(/\b(\d+)\b/g, '<span class="number">$1</span>');
+
+  // Java keywords
+  code = code.replace(
+    new RegExp(
+      "\\b(abstract|assert|boolean|break|byte|case|catch|char|class|const|continue|" +
+      "default|do|double|else|enum|extends|final|finally|float|for|goto|if|" +
+      "implements|import|instanceof|int|interface|long|native|new|package|private|" +
+      "protected|public|return|short|static|strictfp|super|switch|synchronized|this|" +
+      "throw|throws|transient|try|void|volatile|while)\\b", "g"
+    ),
+    '<span class="keyword">$1</span>'
+  );
+
+  // Data types (like String, Integer, etc.)
+  code = code.replace(
+    /\b(String|Integer|Double|Float|Character|Boolean|Object|System|Math|Thread)\b/g,
+    '<span class="datatype">$1</span>'
+  );
+
+  // Class names (basic heuristic — capitalized identifiers)
+  code = code.replace(/\b([A-Z][a-zA-Z0-9_]*)\b/g, '<span class="class">$1</span>');
+
+  // Methods (something followed by parentheses)
+  code = code.replace(/(\b[a-zA-Z_][a-zA-Z0-9_]*)(?=\s*\()/g, '<span class="method">$1</span>');
+
+  return code;
+}
+
+
   //Toaster Notification
   function showToast(message, duration = 3000) {
     const toast = document.createElement("div");
@@ -119,8 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
         document.getElementById("modal-lang").textContent = `Language: ${
           snippet.language || "Unknown"
         }`;
-        document.getElementById("modal-code").textContent =
-          snippet.code || "No code found.";
+        const highlighted = highlightJava(snippet.code || "");
+document.getElementById("modal-code").innerHTML = highlighted;
+
         document.getElementById("modal-desc").textContent =
           snippet.description || "No description provided.";
         modal.querySelector("#modal-code").style.display = "block";

@@ -254,3 +254,45 @@ nav a:hover {
   background: #555;
   color: #fff;
 }
+/* === Java Syntax Colors (VS Code Dark Style) === */
+
+.keyword {
+  color: #c792ea; /* Purple for keywords */
+  font-weight: 600;
+}
+
+.datatype {
+  color: #82aaff; /* Blue for data types */
+}
+
+.class {
+  color: #ffcb6b; /* Yellow for class names */
+}
+
+.method {
+  color: #89ddff; /* Light blue for methods */
+}
+
+.string {
+  color: #c3e88d; /* Green for strings */
+}
+
+.number {
+  color: #f78c6c; /* Orange for numbers */
+}
+
+.comment {
+  color: #757575; /* Gray for comments */
+  font-style: italic;
+}
+
+/* Optional code background style */
+#modal-code {
+  background: #1e1e1e;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  overflow-x: auto;
+}
