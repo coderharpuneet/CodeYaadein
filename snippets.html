@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="assets/css/snippets.css" />
 
     <!-- Shared header injector + page logic -->
-    <script src="assets/js/header.js" defer></script>
     <script src="assets/js/snippets.js" defer></script>
 
     <!-- Favicon -->
@@ -19,26 +18,30 @@
 </head>
 
 <body>
-    <!-- header is injected by assets/js/header.js to keep nav consistent across pages -->
-    <header id="site-header" role="banner"></header>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <div class="logo-text"><a href="index.html">CodeYaadein</a></div>
+        </div>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="snippets.html">Snippets</a>
+        </nav>
+    </header>
 
     <main>
-        <section class="snippet-display-section" aria-labelledby="snippets-heading">
+        <section class="snippet-display-section">
             <h1 id="snippets-heading">Your Saved Snippets</h1>
 
             <div class="search-bar" role="search" aria-label="Search snippets">
-                <input
-                    type="search"
-                    id="search-input"
-                    placeholder="Search snippets by title, language or description..."
-                    aria-label="Search snippets" />
+                <input type="search" id="search-input"
+                    placeholder="Search snippets by title, language or description..." aria-label="Search snippets" />
             </div>
 
             <div class="snippet-container" aria-live="polite"></div>
         </section>
     </main>
 
-    <!-- No inline script here: JS files are loaded with `defer` in the head -->
 </body>
 
 </html>

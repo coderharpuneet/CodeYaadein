@@ -17,35 +17,44 @@ a {
    Header
    ========================================= */
 header {
-  background: #1a1a1a;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* space-between sabse safe */
   align-items: center;
+  background: #1a1a1a;
   padding: 15px 40px;
   border-bottom: 2px solid #b5ff18;
+  position: relative;
 }
 
-.logo {
+/* Nav ko center mein fix karte hain */
+nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
-  align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 24px;
+  z-index: 1;
+}
+nav a {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+nav a.active,
+nav a:hover {
+  color: #b5ff18;
+}
+.logo {
+  position: relative;
+  z-index: 2;
 }
 
 .logo-text a {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #b5ff18;
-}
-
-nav a {
-  color: #fff;
-  margin-left: 20px;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a.active,
-nav a:hover {
   color: #b5ff18;
 }
 
@@ -65,8 +74,10 @@ nav a:hover {
 
 .snippet-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  justify-content: center;
+  align-items: start;
 }
 
 .snippet-card {
@@ -74,7 +85,13 @@ nav a:hover {
   border: 2px solid #2a2a2a;
   border-radius: 15px;
   padding: 20px;
+  height: 270px;
+  width: 100%;
+  box-sizing: border-box;
   transition: transform 0.3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .snippet-card:hover {
@@ -86,6 +103,7 @@ nav a:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
 }
 
 .snippet-header h2 {
@@ -139,35 +157,39 @@ nav a:hover {
   gap: 8px;
 }
 
-.edit-btn,
-.delete-btn {
-  padding: 6px 12px;
+.edit-btn {
+  background: transparent;
+  color: #b5ff18;
+  border: 1.5px solid #b5ff18;
+  padding: 8px 16px;
   border-radius: 8px;
-  border: none;
   cursor: pointer;
   font-weight: 600;
+  font-size: 0.95rem;
   transition: all 0.3s ease;
-  font-size: 0.85rem;
 }
-
-.edit-btn {
-  background: #007bff;
-  color: #fff;
-}
-
 .edit-btn:hover {
-  background: #339cff;
-  transform: scale(1.05);
+  background: #b5ff18;
+  color: #000;
 }
+
 
 .delete-btn {
-  background: #ff4444;
+  background-color: red;
   color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 6px 0 #28282888;
 }
-
 .delete-btn:hover {
-  background: #ff6666;
-  transform: scale(1.05);
+  background-color: white;
+  color: red;
+  box-shadow: 0 4px 10px 0 #ff444488;
 }
 
 #save-btn,
@@ -236,12 +258,13 @@ nav a:hover {
   border: 2px solid #b5ff18;
   border-radius: 15px;
   padding: 25px;
-  max-width: 700px;
-  width: 90%;
+  max-width: 1000px;
+  width: 95%;
   color: #fff;
   box-shadow: 0 0 20px #000;
   position: relative;
 }
+
 
 .close-btn {
   position: absolute;
@@ -285,13 +308,29 @@ nav a:hover {
 /* =========================================
    Syntax Highlighting (Java)
    ========================================= */
-.keyword { color: #c792ea; font-weight: 600; }
-.datatype { color: #82aaff; }
-.class { color: #ffcb6b; }
-.method { color: #89ddff; }
-.string { color: #c3e88d; }
-.number { color: #f78c6c; }
-.comment { color: #757575; font-style: italic; }
+.keyword {
+  color: #c792ea;
+  font-weight: 600;
+}
+.datatype {
+  color: #82aaff;
+}
+.class {
+  color: #ffcb6b;
+}
+.method {
+  color: #89ddff;
+}
+.string {
+  color: #c3e88d;
+}
+.number {
+  color: #f78c6c;
+}
+.comment {
+  color: #757575;
+  font-style: italic;
+}
 
 /* =========================================
    Search Bar
@@ -322,4 +361,16 @@ nav a:hover {
 
 #search-input::placeholder {
   color: #888;
+}
+#modal-edit-code{
+  background: #1e1e1e;
+  color: #ffffff;
+  padding: 12px;
+  border-radius: 8px;
+  font-family: "Fira Code", monospace;
+  font-size: 14px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  max-height: 400px;
 }

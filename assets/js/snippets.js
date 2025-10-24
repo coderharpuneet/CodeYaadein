@@ -341,13 +341,45 @@ document.addEventListener("DOMContentLoaded", () => {
     function handleDelete(index) {
         if (typeof index !== "number" || !snippets[index]) return;
         const name = snippets[index].title || "Untitled";
-        if (!confirm(`Delete snippet "${name}"?`)) return;
 
-        snippets.splice(index, 1);
-        persistSnippets();
-        renderSnippets();
-        showToast(`"${name}" deleted successfully.`);
+        // Custom delete confirm toast-modal
+        showDeleteConfirm(`Delete snippet "${name}"?`, () => {
+            snippets.splice(index, 1);
+            persistSnippets();
+            renderSnippets();
+            showToast(`"${name}" deleted successfully.`);
+        });
     }
+    function showDeleteConfirm(message, onConfirm) {
+        // Modal already open hai to ignore
+        if (document.getElementById('delete-confirm-modal')) return;
+        const modal = document.createElement('div');
+        modal.id = 'delete-confirm-modal';
+        modal.style.cssText = `
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: rgba(0,0,0,0.54); display: flex; justify-content: center; align-items: center; z-index: 10000;
+        `;
+        modal.innerHTML = `
+        <div style="
+            background: #191919; color: #fff; padding: 28px 24px 20px;
+            border-radius: 14px; box-shadow: 0 10px 32px #000a;
+            min-width: 320px; max-width: 80vw; text-align: center;
+            border: 2px solid #b5ff18;">
+            <div style="margin-bottom: 18px; font-size: 1.05rem;">${message}</div>
+            <button id="confirm-del-yes" style="background: #ff4444; color: #fff; border: none; padding: 8px 22px; border-radius: 8px; font-weight: 700; margin-right: 16px; cursor:pointer;">Delete</button>
+            <button id="confirm-del-no" style="background: #232323; color: #fff; border: 1.5px solid #bbb; padding: 8px 22px; border-radius: 8px; font-weight: 600; cursor:pointer;">Cancel</button>
+        </div>
+        `;
+        document.body.appendChild(modal);
+
+        document.getElementById('confirm-del-yes').onclick = () => {
+            modal.remove();
+            onConfirm();
+        };
+        document.getElementById('confirm-del-no').onclick = () => modal.remove();
+    }
+
+
 
     /* -------------------------- Delegated Events -------------------------- */
     container.addEventListener("click", (ev) => {

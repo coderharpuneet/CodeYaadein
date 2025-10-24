@@ -16,35 +16,45 @@ a {
    Header
    ========================================= */
 header {
-  background: #1a1a1a;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* space-between sabse safe */
   align-items: center;
+  background: #1a1a1a;
   padding: 15px 40px;
   border-bottom: 2px solid #b5ff18;
+  position: relative;
+}
+
+/* Nav ko center mein fix karte hain */
+nav {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  z-index: 1;
+}
+nav a {
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+nav a.active,
+nav a:hover {
+  color: #b5ff18;
 }
 
 .logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  position: relative;
+  z-index: 2;
 }
 
 .logo-text a {
   font-size: 1.3rem;
   font-weight: 700;
-  color: #b5ff18;
-}
-
-nav a {
-  color: #fff;
-  margin-left: 20px;
-  font-weight: 500;
-  transition: color 0.3s;
-}
-
-nav a.active,
-nav a:hover {
   color: #b5ff18;
 }
 
